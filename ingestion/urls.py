@@ -1,28 +1,11 @@
 from django.urls import path
+from django.http import JsonResponse
 
-from .views import (
-    SAPUploadView,
-    UtilityUploadView,
-    TravelUploadView,
-)
+def ingestion_home(request):
+    return JsonResponse({
+        "message": "Ingestion API Working"
+    })
 
 urlpatterns = [
-
-    # SAP Upload
-    path(
-        "upload/sap/",
-        SAPUploadView.as_view()
-    ),
-
-    # Utility Upload
-    path(
-        "upload/utility/",
-        UtilityUploadView.as_view()
-    ),
-
-    # Travel Upload
-    path(
-        "upload/travel/",
-        TravelUploadView.as_view()
-    ),
+    path('', ingestion_home),
 ]
