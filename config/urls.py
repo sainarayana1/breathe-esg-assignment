@@ -16,28 +16,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.http import HttpResponse
+from django.http import JsonResponse
 
 
-# Home Page
+# Home API
 def home(request):
-    return HttpResponse(
-        """
-        <h1>ESG Analytics Platform is Live 🚀</h1>
-        <p>Django REST API deployment successful.</p>
-
-        <h3>Available APIs:</h3>
-
-        <ul>
-            <li>/admin/</li>
-            <li>/api/emissions/dashboard/</li>
-            <li>/api/emissions/analytics/</li>
-            <li>/api/emissions/top-sources/</li>
-            <li>/api/emissions/summary-report/</li>
-            <li>/api/emissions/pdf-report/</li>
-        </ul>
-        """
-    )
+    return JsonResponse({
+        "status": "success",
+        "message": "ESG Analytics Platform API is Live 🚀",
+        "available_endpoints": {
+            "admin": "/admin/",
+            "dashboard": "/api/emissions/dashboard/",
+            "analytics": "/api/emissions/analytics/",
+            "top_sources": "/api/emissions/top-sources/",
+            "summary_report": "/api/emissions/summary-report/",
+            "pdf_report": "/api/emissions/pdf-report/",
+        }
+    })
 
 
 urlpatterns = [
@@ -53,5 +48,15 @@ urlpatterns = [
     path(
         'api/audits/',
         include('audits.urls')
+    ),
+
+    path(
+        'api/companies/',
+        include('companies.urls')
+    ),
+
+    path(
+        'api/ingestion/',
+        include('ingestion.urls')
     ),
 ]
