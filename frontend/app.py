@@ -2,6 +2,12 @@ import streamlit as st
 import requests
 import pandas as pd
 
+# ---------------------------------------------------
+
+# API BASE URL
+
+# ---------------------------------------------------
+
 API_BASE = "https://breathe-esg-assignment-thoq.onrender.com"
 
 # ---------------------------------------------------
@@ -32,11 +38,12 @@ st.markdown("### Breathe ESG Internship Assignment")
 # ---------------------------------------------------
 
 try:
-dashboard = requests.get(
-f"{API_BASE}/api/emissions/dashboard/"
-).json()
 
 ```
+dashboard = requests.get(
+    f"{API_BASE}/api/emissions/dashboard/"
+).json()
+
 analytics = requests.get(
     f"{API_BASE}/api/emissions/analytics/"
 ).json()
@@ -47,8 +54,11 @@ top_sources = requests.get(
 ```
 
 except Exception as e:
+
+```
 st.error(f"API Connection Error: {e}")
 st.stop()
+```
 
 # ---------------------------------------------------
 
@@ -80,7 +90,7 @@ st.divider()
 
 # ---------------------------------------------------
 
-# ANALYTICS
+# ANALYTICS SECTION
 
 # ---------------------------------------------------
 
@@ -101,6 +111,7 @@ elif isinstance(analytics, list):
     analytics_df = pd.DataFrame(analytics)
 
 else:
+
     analytics_df = pd.DataFrame()
 
 if not analytics_df.empty:
@@ -141,6 +152,7 @@ elif isinstance(top_sources, list):
     top_df = pd.DataFrame(top_sources)
 
 else:
+
     top_df = pd.DataFrame()
 
 if not top_df.empty:
