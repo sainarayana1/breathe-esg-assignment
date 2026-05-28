@@ -1,0 +1,5 @@
+Meter_ID,Facility,kWh,Unit,Billing_Period
+MTR001,Plant_A,1200,kWh,2026-05
+MTR002,Plant_B,900,kWh,2026-05
+MTR003,Warehouse,1500,kWh,2026-05
+MTR004,Office,-200,kWh,2026-05

@@ -1,0 +1,5 @@
+Plant_Code,Fuel_Type,Quantity,Unit,Transaction_Date
+PLT_1001,Diesel,1200,Liters,2026-05-01
+PLT_1002,Petrol,850,Liters,2026-05-02
+PLT_1003,Natural Gas,500,m3,2026-05-03
+PLT_1004,Diesel,-100,Liters,2026-05-04

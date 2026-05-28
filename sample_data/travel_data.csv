@@ -1,0 +1,5 @@
+Employee_Name,Travel_Type,From_City,To_City,Distance_km
+John Doe,Flight,Delhi,Bangalore,2150
+Jane Smith,Flight,Mumbai,Chennai,1330
+Alex Kumar,Train,Hyderabad,Delhi,1670
+Chris Paul,Flight,Bangalore,Dubai,-500
