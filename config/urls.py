@@ -19,11 +19,12 @@ from django.urls import path, include
 from django.http import JsonResponse
 
 
-# Home API
 def home(request):
     return JsonResponse({
         "status": "success",
+        "project": "Breathe ESG Internship Assignment",
         "message": "ESG Analytics Platform API is Live 🚀",
+
         "available_endpoints": {
             "admin": "/admin/",
             "dashboard": "/api/emissions/dashboard/",
@@ -31,6 +32,9 @@ def home(request):
             "top_sources": "/api/emissions/top-sources/",
             "summary_report": "/api/emissions/summary-report/",
             "pdf_report": "/api/emissions/pdf-report/",
+            "companies": "/api/companies/",
+            "audits": "/api/audits/",
+            "ingestion": "/api/ingestion/",
         }
     })
 
@@ -40,23 +44,11 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
 
-    path(
-        'api/emissions/',
-        include('emissions.urls')
-    ),
+    path('api/emissions/', include('emissions.urls')),
 
-    path(
-        'api/audits/',
-        include('audits.urls')
-    ),
+    path('api/companies/', include('companies.urls')),
 
-    path(
-        'api/companies/',
-        include('companies.urls')
-    ),
+    path('api/audits/', include('audits.urls')),
 
-    path(
-        'api/ingestion/',
-        include('ingestion.urls')
-    ),
+    path('api/ingestion/', include('ingestion.urls')),
 ]
