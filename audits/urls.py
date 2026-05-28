@@ -1,9 +1,11 @@
 from django.urls import path
-from .views import AuditLogListView
+from django.http import JsonResponse
+
+def audits_home(request):
+    return JsonResponse({
+        "message": "Audits API Working"
+    })
 
 urlpatterns = [
-    path(
-        "logs/",
-        AuditLogListView.as_view()
-    ),
+    path('', audits_home),
 ]
