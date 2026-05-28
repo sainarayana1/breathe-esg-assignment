@@ -4,30 +4,40 @@ from django.http import JsonResponse
 
 def dashboard(request):
     return JsonResponse({
-        "message": "Dashboard API Working"
+        "status": "success",
+        "endpoint": "dashboard",
+        "message": "Emission Dashboard API Working"
     })
 
 
 def analytics(request):
     return JsonResponse({
-        "message": "Analytics API Working"
+        "status": "success",
+        "endpoint": "analytics",
+        "message": "Emission Analytics API Working"
     })
 
 
 def top_sources(request):
     return JsonResponse({
-        "message": "Top Sources API Working"
+        "status": "success",
+        "endpoint": "top-sources",
+        "message": "Top Emission Sources API Working"
     })
 
 
 def summary_report(request):
     return JsonResponse({
+        "status": "success",
+        "endpoint": "summary-report",
         "message": "Summary Report API Working"
     })
 
 
 def pdf_report(request):
     return JsonResponse({
+        "status": "success",
+        "endpoint": "pdf-report",
         "message": "PDF Report API Working"
     })
 
