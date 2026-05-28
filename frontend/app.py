@@ -1,4 +1,4 @@
-```python
+python
 import streamlit as st
 import requests
 import pandas as pd
@@ -137,4 +137,4 @@ st.markdown(
 st.divider()
 
 st.success("🚀 ESG Analytics Platform Live")
-```
+
