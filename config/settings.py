@@ -25,10 +25,10 @@ SECRET_KEY = os.getenv(
 
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = os.getenv(
-    "ALLOWED_HOSTS",
-    "*"
-).split(",")
+ALLOWED_HOSTS = [
+    "*",
+    "breathe-esg-assignment-thoq.onrender.com",
+]
 
 
 # ---------------------------------------------------
@@ -92,6 +92,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.request',
+                'django.template.context_processors.debug',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
