@@ -16,17 +16,42 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponse
+
+
+# Home Page
+def home(request):
+    return HttpResponse(
+        """
+        <h1>ESG Analytics Platform is Live 🚀</h1>
+        <p>Django REST API deployment successful.</p>
+
+        <h3>Available APIs:</h3>
+
+        <ul>
+            <li>/admin/</li>
+            <li>/api/emissions/dashboard/</li>
+            <li>/api/emissions/analytics/</li>
+            <li>/api/emissions/top-sources/</li>
+            <li>/api/emissions/summary-report/</li>
+            <li>/api/emissions/pdf-report/</li>
+        </ul>
+        """
+    )
+
 
 urlpatterns = [
+    path('', home),
 
     path('admin/', admin.site.urls),
 
-    # Ingestion APIs
-    path('api/', include('ingestion.urls')),
+    path(
+        'api/emissions/',
+        include('emissions.urls')
+    ),
 
-    # Emissions APIs
-    path('api/emissions/', include('emissions.urls')),
-
-    # Audit APIs
-    path('api/audits/', include('audits.urls')),
+    path(
+        'api/audits/',
+        include('audits.urls')
+    ),
 ]
