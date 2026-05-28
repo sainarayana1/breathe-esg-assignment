@@ -1,307 +1,257 @@
-# ESG Analytics Platform 🌍
+# 🌍 ESG Analytics Platform
 
-A Django-based ESG (Environmental, Social, and Governance) Analytics Platform developed for the Breathe ESG Internship Assignment.
+A complete **full-stack ESG (Environmental, Social, and Governance) Analytics Platform** developed for the **Breathe ESG Internship Assignment**.
 
-This platform helps companies:
+This project provides:
 
-- Upload emission datasets
-- Process ESG records
-- Review and approve emissions
-- Detect suspicious data
-- Generate ESG analytics
-- Export ESG PDF reports
-- Maintain audit logs
-- Benchmark ESG performance
+✅ ESG emissions tracking
+✅ Interactive analytics dashboard
+✅ REST API backend
+✅ PDF report generation
+✅ Cloud deployment using Render
+✅ Frontend visualization using Streamlit
 
 ---
 
-# 🚀 Features Implemented
+# 🚀 Live Deployment Links
 
-## 1. ESG Data Ingestion
+## 🌐 Frontend Dashboard
 
-Supports uploading:
+https://breathe-esg-frontend-yhxm.onrender.com/
 
-- SAP datasets
-- Utility datasets
-- Travel datasets
+## ⚙️ Backend API
 
-### Endpoints
+https://breathe-esg-assignment-thoq.onrender.com/
 
-```http
-POST /api/upload/sap/
-POST /api/upload/utility/
-POST /api/upload/travel/
-```
+## 💻 GitHub Repository
 
-### Technologies Used
-
-- Django REST Framework
-- CSV Processing
-- JSON Parsing
+https://github.com/sainarayana1/breathe-esg-assignment
 
 ---
 
-# 2. Emission Calculation Engine
+# 📌 Project Overview
 
-Automatically calculates:
+The ESG Analytics Platform is designed to help organizations monitor and analyze sustainability metrics related to carbon emissions.
 
-- CO2 emissions
-- Scope 1 emissions
-- Scope 2 emissions
-- Scope 3 emissions
+The platform provides:
 
-### Formula Used
-
-```python
-co2e = quantity * emission_factor
-```
+* Emission analytics
+* CO₂ tracking
+* ESG dashboards
+* PDF reporting
+* REST API endpoints
+* Frontend visualization
 
 ---
 
-# 3. Review Workflow System
+# 🛠️ Tech Stack
 
-Analysts can:
+## Backend
 
-- Approve records
-- Reject records
+* Python
+* Django
+* Django REST Framework
+* SQLite
+* ReportLab
 
-### Endpoint
+## Frontend
 
-```http
-POST /api/emissions/review/<record_id>/
-```
+* Streamlit
+* Pandas
+* Requests
 
-### Example Request
+## Deployment
 
-```json
-{
-    "action": "approve"
-}
-```
-
----
-
-# 4. Audit Logging System
-
-Tracks:
-
-- Who reviewed records
-- Action performed
-- Timestamp
-- Metadata
-
-### Endpoint
-
-```http
-GET /api/audits/logs/
-```
-
-### Audit Information Stored
-
-- company
-- emission_record
-- actor
-- action
-- metadata
-- timestamp
-
----
-
-# 5. ESG Dashboard Analytics
-
-Provides complete ESG metrics.
-
-### Endpoint
-
-```http
-GET /api/emissions/dashboard/
-```
-
-### Metrics Included
-
-- Total emissions
-- Scope-wise emissions
-- Approved records
-- Pending records
-- Rejected records
-- Suspicious records
-
----
-
-# 6. Top Emission Sources
-
-Shows highest emission-producing categories.
-
-### Endpoint
-
-```http
-GET /api/emissions/top-sources/
-```
-
-### Example Output
-
-```json
-[
-  {
-    "category": "Diesel",
-    "total_co2e": 2948.0
-  }
-]
-```
-
----
-
-# 7. ESG Analytics Engine
-
-Advanced ESG statistics.
-
-### Endpoint
-
-```http
-GET /api/emissions/analytics/
-```
-
-### Analytics Included
-
-- Total records
-- Average emissions
-- Highest emission source
-- Total emissions
-
----
-
-# 8. ESG Summary Report
-
-Professional ESG summary generation.
-
-### Endpoint
-
-```http
-GET /api/emissions/summary-report/
-```
-
-### Includes
-
-- Company details
-- Total emissions
-- Scope breakdown
-- Approved records
-- Suspicious records
-
----
-
-# 9. ESG Health Score
-
-Calculates ESG quality score.
-
-### Endpoint
-
-```http
-GET /api/emissions/health-score/
-```
-
-### Logic
-
-Score depends on:
-
-- Suspicious records
-- Approved records
-- Data quality
-
----
-
-# 10. Company Benchmarking
-
-Benchmarks ESG performance.
-
-### Endpoint
-
-```http
-GET /api/emissions/benchmark/
-```
-
-### Benchmark Factors
-
-- Total emissions
-- Approved records
-- Suspicious records
-
----
-
-# 11. PDF ESG Report Export
-
-Generates downloadable ESG PDF report.
-
-### Endpoint
-
-```http
-GET /api/emissions/pdf-report/
-```
-
-### Technologies Used
-
-- ReportLab
-- Django HttpResponse
-
-### PDF Includes
-
-- Company details
-- Emission summary
-- ESG statistics
-- Suspicious records
-
----
-
-# 🛠 Tech Stack
-
-| Technology | Purpose |
-|---|---|
-| Django | Backend framework |
-| Django REST Framework | API development |
-| SQLite | Database |
-| ReportLab | PDF generation |
-| Postman | API testing |
-| GitHub | Version control |
-| Render | Deployment |
+* Render Cloud Platform
+* GitHub
 
 ---
 
 # 📂 Project Structure
 
-```text
-backend/
+```bash
+breathe-esg-assignment/
 │
 ├── audits/
 ├── companies/
+├── config/
 ├── emissions/
 ├── ingestion/
-├── config/
+├── sample_data/
 │
 ├── manage.py
 ├── requirements.txt
-├── Procfile
 └── README.md
 ```
 
 ---
 
-# ⚙️ Setup Instructions
+# ✨ Features
 
-## 1. Clone Repository
+## ✅ ESG Dashboard
+
+Interactive frontend dashboard for ESG insights.
+
+## ✅ Emission Analytics
+
+Breakdown of:
+
+* Electricity emissions
+* Travel emissions
+* Fuel emissions
+
+## ✅ Top Emission Sources
+
+Tracks major contributors to carbon emissions.
+
+## ✅ REST API Backend
+
+Modular Django REST APIs for ESG operations.
+
+## ✅ PDF Report Generation
+
+Downloadable ESG sustainability reports.
+
+## ✅ Cloud Deployment
+
+Fully deployed backend and frontend on Render.
+
+---
+
+# 🌐 Backend API Endpoints
+
+## Root API
 
 ```bash
-git clone <your-github-repo-url>
+GET /
+```
+
+Response:
+
+```json
+{
+  "status": "success",
+  "project": "Breathe ESG Internship Assignment"
+}
 ```
 
 ---
 
-## 2. Create Virtual Environment
+## 📊 Dashboard Analytics
+
+```bash
+GET /api/emissions/dashboard/
+```
+
+Live API:
+https://breathe-esg-assignment-thoq.onrender.com/api/emissions/dashboard/
+
+---
+
+## 📈 Emissions Analytics
+
+```bash
+GET /api/emissions/analytics/
+```
+
+Live API:
+https://breathe-esg-assignment-thoq.onrender.com/api/emissions/analytics/
+
+---
+
+## 🏭 Top Emission Sources
+
+```bash
+GET /api/emissions/top-sources/
+```
+
+Live API:
+https://breathe-esg-assignment-thoq.onrender.com/api/emissions/top-sources/
+
+---
+
+## 📝 ESG Summary Report
+
+```bash
+GET /api/emissions/summary-report/
+```
+
+Live API:
+https://breathe-esg-assignment-thoq.onrender.com/api/emissions/summary-report/
+
+---
+
+## 📄 PDF Report Generation
+
+```bash
+GET /api/emissions/pdf-report/
+```
+
+Live API:
+https://breathe-esg-assignment-thoq.onrender.com/api/emissions/pdf-report/
+
+---
+
+## 🏢 Companies API
+
+```bash
+GET /api/companies/
+```
+
+Live API:
+https://breathe-esg-assignment-thoq.onrender.com/api/companies/
+
+---
+
+## 🔍 Audits API
+
+```bash
+GET /api/audits/
+```
+
+Live API:
+https://breathe-esg-assignment-thoq.onrender.com/api/audits/
+
+---
+
+## 📥 Data Ingestion API
+
+```bash
+GET /api/ingestion/
+```
+
+Live API:
+https://breathe-esg-assignment-thoq.onrender.com/api/ingestion/
+
+---
+
+# 🧪 Running the Project Locally
+
+## 1️⃣ Clone Repository
+
+```bash
+git clone https://github.com/sainarayana1/breathe-esg-assignment.git
+```
+
+---
+
+## 2️⃣ Navigate to Project Folder
+
+```bash
+cd breathe-esg-assignment
+```
+
+---
+
+## 3️⃣ Create Virtual Environment
 
 ```bash
 python -m venv venv
 ```
 
-Activate environment:
+---
+
+## 4️⃣ Activate Environment
 
 ### Windows
 
@@ -309,9 +259,15 @@ Activate environment:
 venv\Scripts\activate
 ```
 
+### Linux / Mac
+
+```bash
+source venv/bin/activate
+```
+
 ---
 
-## 3. Install Dependencies
+## 5️⃣ Install Dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -319,115 +275,99 @@ pip install -r requirements.txt
 
 ---
 
-## 4. Run Migrations
+## 6️⃣ Run Migrations
 
 ```bash
-python manage.py makemigrations
 python manage.py migrate
 ```
 
 ---
 
-## 5. Create Superuser
-
-```bash
-python manage.py createsuperuser
-```
-
----
-
-## 6. Run Server
+## 7️⃣ Start Django Server
 
 ```bash
 python manage.py runserver
 ```
 
----
+Backend runs at:
 
-# 🌐 Deployment
-
-Deployed using:
-
-- Render.com
-
-### Deployment Steps
-
-1. Push code to GitHub
-2. Connect repository to Render
-3. Add build/start commands
-4. Deploy Django app
-
----
-
-# 🔗 Important API Endpoints
-
-| Feature | Endpoint |
-|---|---|
-| Dashboard | `/api/emissions/dashboard/` |
-| Analytics | `/api/emissions/analytics/` |
-| Summary Report | `/api/emissions/summary-report/` |
-| Health Score | `/api/emissions/health-score/` |
-| Benchmark | `/api/emissions/benchmark/` |
-| PDF Report | `/api/emissions/pdf-report/` |
-| Audit Logs | `/api/audits/logs/` |
-
----
-
-# 🧪 Testing
-
-Tested using:
-
-- Browser
-- Postman
-- Django Admin Panel
-
----
-
-# 🔐 Admin Access
-
-### Django Admin
-
-```text
-/admin/
-```
-
-### Features
-
-- View emission records
-- View audit logs
-- Manage companies
-- Review ESG data
-
----
-
-# 📊 Sample ESG Metrics
-
-```json
-{
-    "total_emissions": 9765.17,
-    "scope_1_emissions": 6566.0,
-    "scope_2_emissions": 2788.0,
-    "scope_3_emissions": 411.17
-}
+```bash
+http://127.0.0.1:8000/
 ```
 
 ---
 
-# 📌 Key Learnings
+# 🌐 Frontend Setup
 
-During this project:
+## Install Frontend Dependencies
 
-- Built REST APIs using Django REST Framework
-- Implemented ESG workflows
-- Generated PDF reports
-- Performed analytics using Django ORM
-- Implemented audit logging
-- Learned deployment using Render
+```bash
+pip install streamlit pandas requests
+```
 
 ---
 
-# 👨‍💻 Developed By
+## Run Frontend
 
-Narayana Mamidipaka
+```bash
+streamlit run app.py
+```
 
-For Breathe ESG Internship Assignment
+Frontend runs at:
+
+```bash
+http://localhost:8501/
+```
+
+---
+
+# 📊 Dashboard Preview
+
+The frontend dashboard displays:
+
+✅ Total emissions
+✅ Emission analytics
+✅ Top emission sources
+✅ ESG PDF report download
+✅ API integration status
+
+---
+
+# 🚀 Deployment Details
+
+## Backend Deployment
+
+* Platform: Render
+* Framework: Django REST Framework
+
+## Frontend Deployment
+
+* Platform: Render
+* Framework: Streamlit
+
+---
+
+# 🔮 Future Improvements
+
+* User Authentication
+* PostgreSQL Integration
+* Real-time ESG Monitoring
+* AI-based Sustainability Predictions
+* Interactive Charts
+* CSV Upload System
+* ESG Health Score System
+
+---
+
+# 👨‍💻 Author
+
+## Narayana Mamidipaka
+
+GitHub:
+https://github.com/sainarayana1
+
+---
+
+# 📄 License
+
+This project was developed for educational and internship evaluation purposes.
