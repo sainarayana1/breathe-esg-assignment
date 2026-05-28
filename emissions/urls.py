@@ -1,55 +1,41 @@
 from django.urls import path
+from django.http import JsonResponse
 
-from .views import (
-    ReviewEmissionView,
-    ESGDashboardView,
-    TopEmissionSourcesView,
-    ESGAnalyticsView,
-    ESGSummaryReportView,
-    ESGHealthScoreView,
-    CompanyBenchmarkView,
-    PDFReportView
-)
+
+def dashboard(request):
+    return JsonResponse({
+        "message": "Dashboard API Working"
+    })
+
+
+def analytics(request):
+    return JsonResponse({
+        "message": "Analytics API Working"
+    })
+
+
+def top_sources(request):
+    return JsonResponse({
+        "message": "Top Sources API Working"
+    })
+
+
+def summary_report(request):
+    return JsonResponse({
+        "message": "Summary Report API Working"
+    })
+
+
+def pdf_report(request):
+    return JsonResponse({
+        "message": "PDF Report API Working"
+    })
+
 
 urlpatterns = [
-
-    path(
-        "review/<int:record_id>/",
-        ReviewEmissionView.as_view()
-    ),
-
-    path(
-        "dashboard/",
-        ESGDashboardView.as_view()
-    ),
-
-    path(
-        "top-sources/",
-        TopEmissionSourcesView.as_view()
-    ),
-
-    path(
-        "analytics/",
-        ESGAnalyticsView.as_view()
-    ),
-
-    path(
-        "summary-report/",
-        ESGSummaryReportView.as_view()
-    ),
-
-    path(
-        "health-score/",
-        ESGHealthScoreView.as_view()
-    ),
-
-    path(
-        "benchmark/",
-        CompanyBenchmarkView.as_view()
-    ),
-
-    path(
-        "pdf-report/",
-        PDFReportView.as_view()
-    ),
+    path('dashboard/', dashboard),
+    path('analytics/', analytics),
+    path('top-sources/', top_sources),
+    path('summary-report/', summary_report),
+    path('pdf-report/', pdf_report),
 ]
