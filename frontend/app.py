@@ -1,195 +1,140 @@
+```python
 import streamlit as st
 import requests
 import pandas as pd
 
-# ---------------------------------------------------
-
-# API BASE URL
-
-# ---------------------------------------------------
-
 API_BASE = "https://breathe-esg-assignment-thoq.onrender.com"
 
-# ---------------------------------------------------
-
-# PAGE CONFIG
-
-# ---------------------------------------------------
-
 st.set_page_config(
-page_title="ESG Analytics Platform",
-page_icon="🌍",
-layout="wide"
+    page_title="ESG Analytics Platform",
+    page_icon="🌍",
+    layout="wide"
 )
 
-# ---------------------------------------------------
-
-# HEADER
-
-# ---------------------------------------------------
-
 st.title("🌍 ESG Analytics Dashboard")
-st.markdown("### Breathe ESG Internship Assignment")
+st.write("Breathe ESG Internship Assignment")
 
 # ---------------------------------------------------
-
 # FETCH DATA
-
 # ---------------------------------------------------
+
+dashboard = {}
+analytics = {}
+top_sources = {}
 
 try:
+    dashboard = requests.get(
+        f"{API_BASE}/api/emissions/dashboard/"
+    ).json()
 
-```
-dashboard = requests.get(
-    f"{API_BASE}/api/emissions/dashboard/"
-).json()
+    analytics = requests.get(
+        f"{API_BASE}/api/emissions/analytics/"
+    ).json()
 
-analytics = requests.get(
-    f"{API_BASE}/api/emissions/analytics/"
-).json()
-
-top_sources = requests.get(
-    f"{API_BASE}/api/emissions/top-sources/"
-).json()
-```
+    top_sources = requests.get(
+        f"{API_BASE}/api/emissions/top-sources/"
+    ).json()
 
 except Exception as e:
-
-```
-st.error(f"API Connection Error: {e}")
-st.stop()
-```
+    st.error(f"API Error: {e}")
 
 # ---------------------------------------------------
-
 # KPI CARDS
-
 # ---------------------------------------------------
 
 col1, col2, col3 = st.columns(3)
 
 with col1:
-st.metric(
-"Total Emissions",
-dashboard.get("total_emissions", "0")
-)
+    st.metric(
+        "Total Emissions",
+        dashboard.get("total_emissions", 0)
+    )
 
 with col2:
-st.metric(
-"Active Companies",
-dashboard.get("companies", "0")
-)
+    st.metric(
+        "Active Companies",
+        dashboard.get("companies", 0)
+    )
 
 with col3:
-st.metric(
-"Audit Records",
-dashboard.get("audits", "0")
-)
+    st.metric(
+        "Audit Records",
+        dashboard.get("audits", 0)
+    )
 
 st.divider()
 
 # ---------------------------------------------------
-
-# ANALYTICS SECTION
-
+# ANALYTICS
 # ---------------------------------------------------
 
 st.subheader("📊 Emission Analytics")
 
 try:
 
-```
-if isinstance(analytics, dict):
+    if isinstance(analytics, dict):
 
-    analytics_df = pd.DataFrame(
-        list(analytics.items()),
-        columns=["Metric", "Value"]
-    )
+        analytics_df = pd.DataFrame(
+            [analytics]
+        )
 
-elif isinstance(analytics, list):
+    elif isinstance(analytics, list):
 
-    analytics_df = pd.DataFrame(analytics)
+        analytics_df = pd.DataFrame(
+            analytics
+        )
 
-else:
+    else:
 
-    analytics_df = pd.DataFrame()
-
-if not analytics_df.empty:
+        analytics_df = pd.DataFrame()
 
     st.dataframe(analytics_df)
 
-else:
-
-    st.warning("No analytics data available")
-```
-
 except Exception as e:
 
-```
-st.error(f"Analytics Error: {e}")
-```
+    st.error(f"Analytics Error: {e}")
 
 # ---------------------------------------------------
-
 # TOP SOURCES
-
 # ---------------------------------------------------
 
 st.subheader("🏭 Top Emission Sources")
 
 try:
 
-```
-if isinstance(top_sources, dict):
+    if isinstance(top_sources, dict):
 
-    top_df = pd.DataFrame(
-        list(top_sources.items()),
-        columns=["Source", "Value"]
-    )
+        top_df = pd.DataFrame(
+            [top_sources]
+        )
 
-elif isinstance(top_sources, list):
+    elif isinstance(top_sources, list):
 
-    top_df = pd.DataFrame(top_sources)
+        top_df = pd.DataFrame(
+            top_sources
+        )
 
-else:
+    else:
 
-    top_df = pd.DataFrame()
-
-if not top_df.empty:
+        top_df = pd.DataFrame()
 
     st.dataframe(top_df)
 
-else:
-
-    st.warning("No top source data available")
-```
-
 except Exception as e:
 
-```
-st.error(f"Top Sources Error: {e}")
-```
+    st.error(f"Top Sources Error: {e}")
 
 # ---------------------------------------------------
-
 # PDF REPORT
-
 # ---------------------------------------------------
 
 st.subheader("📄 ESG Report")
 
-pdf_url = f"{API_BASE}/api/emissions/pdf-report/"
-
 st.markdown(
-f"[Download ESG PDF Report]({pdf_url})"
+    f"[Download PDF Report]({API_BASE}/api/emissions/pdf-report/)"
 )
-
-# ---------------------------------------------------
-
-# FOOTER
-
-# ---------------------------------------------------
 
 st.divider()
 
 st.success("🚀 ESG Analytics Platform Live")
+```
